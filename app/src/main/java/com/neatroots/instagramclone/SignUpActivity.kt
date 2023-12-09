@@ -1,25 +1,25 @@
 package com.neatroots.instagramclone
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
 import com.neatroots.instagramclone.Models.User
-import com.neatroots.instagramclone.databinding.ActivitySignUp2Binding
+import com.neatroots.instagramclone.databinding.ActivitySignUpBinding
 import com.neatroots.instagramclone.utils.USER_NODE
 import com.neatroots.instagramclone.utils.USER_PROFILE_FOLDER
 import com.neatroots.instagramclone.utils.uploadImage
-import org.checkerframework.common.returnsreceiver.qual.This
 
-class SignUpActivity2 : AppCompatActivity() {
+
+class SignUpActivity : AppCompatActivity() {
     val binding by lazy {
-        ActivitySignUp2Binding.inflate(layoutInflater)
+        ActivitySignUpBinding.inflate(layoutInflater)
     }
     lateinit var user: User
     private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()){
@@ -38,6 +38,8 @@ class SignUpActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        val text = "<font color=#FF000000>Already have an Account</font> <font color=#4DAEFD>Login ?</font>"
+        binding.login.setText(Html.fromHtml(text))
         user = User()
         binding.singUpBtn.setOnClickListener {
             if (binding.name.editText?.text.toString().equals("") or
@@ -45,7 +47,7 @@ class SignUpActivity2 : AppCompatActivity() {
                 binding.password.editText?.text.toString().equals("")
             ) {
                 Toast.makeText(
-                    this@SignUpActivity2,
+                    this@SignUpActivity,
                     "Please fill the all Information",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -64,12 +66,12 @@ class SignUpActivity2 : AppCompatActivity() {
                         Firebase.firestore.collection(USER_NODE)
                             .document(Firebase.auth.currentUser!!.uid).set(user)
                             .addOnSuccessListener {
-                                startActivity(Intent(this@SignUpActivity2,HomeActivity::class.java))
+                                startActivity(Intent(this@SignUpActivity,HomeActivity::class.java))
                                 finish()
                             }
                     } else {
                         Toast.makeText(
-                            this@SignUpActivity2,
+                            this@SignUpActivity,
                             result.exception?.localizedMessage,
                             Toast.LENGTH_SHORT
                         ).show()
@@ -80,6 +82,10 @@ class SignUpActivity2 : AppCompatActivity() {
         }
         binding.addImage.setOnClickListener{
             launcher.launch("image/*")
+        }
+        binding.login.setOnClickListener{
+            startActivity(Intent(this@SignUpActivity,LoginActivity::class.java))
+            finish()
         }
     }
 }
