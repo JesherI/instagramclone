@@ -1,5 +1,6 @@
 package com.neatroots.instagramclone
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -63,7 +64,8 @@ class SignUpActivity2 : AppCompatActivity() {
                         Firebase.firestore.collection(USER_NODE)
                             .document(Firebase.auth.currentUser!!.uid).set(user)
                             .addOnSuccessListener {
-                                Toast.makeText(this@SignUpActivity2, "Login", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this@SignUpActivity2,HomeActivity::class.java))
+                                finish()
                             }
                     } else {
                         Toast.makeText(
