@@ -77,7 +77,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="Sher to Post"
+            android:text="Share to Post"
             android:textSize="16sp"
             android:textStyle="bold" />
 

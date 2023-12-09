@@ -2,13 +2,12 @@ package com.neatroots.instagramclone.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.neatroots.instagramclone.Post.PostActivity
-import com.neatroots.instagramclone.R
+import com.neatroots.instagramclone.Post.ReelActivity
 import com.neatroots.instagramclone.databinding.FragmentAddBinding
 
 
@@ -28,9 +27,10 @@ class AddFragment : BottomSheetDialogFragment() {
 
         binding.post.setOnClickListener{
             activity?.startActivity(Intent(requireContext(),PostActivity::class.java))
+            activity?.finish()
         }
         binding.reel.setOnClickListener {
-            activity?.startActivity(Intent(requireContext(),ReelFragment::class.java))
+            activity?.startActivity(Intent(requireContext(),ReelActivity::class.java))
         }
 
         return  binding.root
