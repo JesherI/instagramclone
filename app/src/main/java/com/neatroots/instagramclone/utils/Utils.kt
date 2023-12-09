@@ -31,7 +31,7 @@ fun uploadVideo(uri: Uri,folderName: String,progressDialog: ProgressDialog,callb
             }
         }
         .addOnProgressListener {
-            val uploadedValue: Long = it.bytesTransferred / it.totalByteCount
+            val uploadedValue: Long = (it.bytesTransferred / it.totalByteCount)*100
             progressDialog.setMessage("Uploaded $uploadedValue %")
         }
 }
