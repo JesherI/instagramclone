@@ -55,13 +55,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/sing_up_btn"
+        android:id="@+id/login_btn"
         style="@style/Widget.Material3.Button.Icon"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/blue"
-        android:text="Register"
+        android:text="Login"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/pass"
         app:layout_constraintStart_toStartOf="@+id/pass"
@@ -73,11 +73,12 @@
         android:layout_height="55dp"
         android:layout_marginBottom="32dp"
         android:elevation="20dp"
-        android:textColor="@color/blue"
+        android:shadowColor="@android:color/transparent"
         android:text="Create New Account"
+        android:textColor="@color/blue"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/sing_up_btn"
-        app:layout_constraintStart_toStartOf="@+id/sing_up_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/login_btn"
+        app:layout_constraintStart_toStartOf="@+id/login_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
