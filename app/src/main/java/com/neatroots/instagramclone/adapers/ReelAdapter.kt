@@ -2,6 +2,7 @@ package com.neatroots.instagramclone.adapers
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.neatroots.instagramclone.Models.Reel
@@ -26,6 +27,7 @@ class ReelAdapter(var context: Context, var reelList: ArrayList<Reel>) :Recycler
         holder.binding.caption.setText(reelList.get(position).caption)
         holder.binding.videoView.setVideoPath(reelList.get(position).reelUrl)
         holder.binding.videoView.setOnPreparedListener{
+            holder.binding.progressBar.visibility = View.GONE
             holder.binding.videoView.start()
         }
     }
